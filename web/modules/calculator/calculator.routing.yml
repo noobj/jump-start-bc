@@ -1,0 +1,14 @@
+calculator:
+  path: 'calculator'
+  defaults:
+    _form: '\Drupal\calculator\Form\CalculatorForm'
+    _title: 'Living Cost Calculator'
+  requirements:
+    _permission: 'access content'
+
+calculator_result:
+  path: 'calculator/result'
+  defaults:
+    _controller: '\Drupal\calculator\Controller\CalculatorController::calculate'
+  requirements:
+    _permission: 'access content'

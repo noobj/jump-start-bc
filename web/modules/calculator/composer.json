@@ -1,0 +1,14 @@
+{
+    "name": "vendor_name/calculator",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "zgin_",
+            "email": "email@example.com"
+        }
+    ],
+    "require": {
+    }
+}

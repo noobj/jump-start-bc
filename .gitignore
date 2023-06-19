@@ -8,6 +8,7 @@
 /web/sites/*/services*.yml
 !/web/sites/*/services.pantheon.*.yml
 !/web/sites/*/services.yml
+web/sites/default/settings.php
 
 # Ignore paths that contain user-generated content.
 /web/sites/*/files
@@ -15,8 +16,7 @@
 
 # Ignore SimpleTest multi-site environment.
 /web/sites/simpletest
-
-
+.idea/*
 # Ignore custom modules managed by Composer.
 #
 # When a development team creates one or more custom modules that
