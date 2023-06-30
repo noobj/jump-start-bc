@@ -1,3 +1,11 @@
-<p>Test twig template!</p>
+<h2>Result</h2>
 
-<p>test_var: {{ test_var }}</p>
+{% for category, item in nodes %}
+    {{ category }}
+    <hr />
+    {% for key, value in item %}
+        {{ value.title }} - ${{ value.price }}
+        <br />
+    {% endfor %}
+    <br />
+{% endfor %}

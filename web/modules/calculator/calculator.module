@@ -3,9 +3,25 @@
  * Implements hook_theme().
  */
 function calculator_theme($existing, $type, $theme, $path){
-return [
-  'my_template' => [
-    'variables' => ['test_var' => NULL],
-  ],
-];
+	return [
+	  'my_template' => [
+		'variables' => [
+			'nodes' => NULL
+		],
+	  ],
+	  'my_form' => [
+		  'variables' => ['form' => NULL]
+	  ]
+	];
+}
+
+/**
+ * Implements hook_modules_installed().
+ */
+function calculator_modules_installed($modules, $is_syncing) {
+	\Drupal::entityTypeManager()->getStorage('living_cost_data')->create(
+		[
+			'name' => 'food'
+		]
+	);
 }

@@ -1,8 +1,7 @@
 calculator:
   path: 'calculator'
   defaults:
-    _form: '\Drupal\calculator\Form\CalculatorForm'
-    _title: 'Living Cost Calculator'
+    _controller: '\Drupal\calculator\Controller\CalculatorController::generateForm'
   requirements:
     _permission: 'access content'
 

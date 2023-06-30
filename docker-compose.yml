@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.3
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/.data/drupal/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=drupal
+      - MYSQL_ROOT_PASSWORD=password
