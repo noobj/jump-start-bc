@@ -6,7 +6,10 @@ function calculator_theme($existing, $type, $theme, $path){
 	return [
 	  'my_template' => [
 		'variables' => [
-			'nodes' => NULL
+			'nodes' => NULL,
+			'total' => 0,
+			'adults' => 1,
+			'totalPeople' => 1
 		],
 	  ],
 	  'my_form' => [
