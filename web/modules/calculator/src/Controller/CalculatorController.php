@@ -3,7 +3,6 @@
 namespace Drupal\calculator\Controller;
 
 use Drupal\node\Entity\Node;
-use Symfony\Component\HttpFoundation\Request;
 use Drupal\Core\Controller\ControllerBase;
 
 class CalculatorController extends ControllerBase {
@@ -48,14 +47,10 @@ class CalculatorController extends ControllerBase {
 			];
 
 			if ($category != 'Rent')
-			$list[$category]['total'] += $price;
+				$price = $price * $totalPeopleNumber;
 
-			if ($category == 'Mobile')
-				$total += $adultsNumber * $price;
-			else if ($category == 'Food')
-				$total += $totalPeopleNumber * $price;
-			else
-				$total += $price;
+			$list[$category]['total'] += $price;
+			$total += $price;
 		}
 
 		return [

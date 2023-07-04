@@ -6,10 +6,8 @@
     {% for key, value in item %}
         {% if key != 'total' %}
             {{ value.title }} - ${{ value.price }}
-            {% if (totalPeople > 1) and (category == 'Food') %}
+            {% if (totalPeople > 1) and (category != 'Rent') %}
                 * {{ totalPeople }}
-            {% elseif (adults > 1) and (category == 'Mobile') %}
-                * {{ adults }}
             {% endif %}
             <br />
         {% endif %}
