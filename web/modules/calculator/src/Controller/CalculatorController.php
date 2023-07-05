@@ -20,22 +20,27 @@ class CalculatorController extends ControllerBase {
 			->condition('field_house_type', $houseType)
 			->execute();
 
-		if ($car == false)
+		$carNids = [];
+		if ($car == true)
 			$carNids = \Drupal::entityQuery('node')->accessCheck(FALSE)->condition
 			('type', 'living_cost_transportation')
-				->condition('field_car', false)
-				->execute();
-		else
-			$carNids = \Drupal::entityQuery('node')->accessCheck(FALSE)->condition
-			('type', 'living_cost_transportation')
+				->condition('field_car', true)
 				->execute();
 
-		$nids = array_merge($nids, $rentNids, $carNids);
-		$nodes = Node::loadMultiple($nids);
+		$transNids = \Drupal::entityQuery('node')->accessCheck(FALSE)->condition
+		('type', 'living_cost_transportation')
+			->condition('field_car', false)
+			->execute();
+
+		$nidsNeedMultiply = array_merge($nids, $transNids);
+		$nodesNeedMultiply = Node::loadMultiple($nidsNeedMultiply);
+
+		$nidsOnce = array_merge($rentNids, $carNids);
+		$nodesOnce = Node::loadMultiple($nidsOnce);
 
 		$total = 0;
 		$list = [];
-		foreach ($nodes as $node) {
+		foreach ($nodesNeedMultiply as $node) {
 			$price = (int) $node->get('field_price')
 				->getString();
 
@@ -44,10 +49,25 @@ class CalculatorController extends ControllerBase {
 			$list[$category][] = [
 				'title' => $node->getTitle(),
 				'price' => $price,
+				'times' => $totalPeopleNumber
 			];
 
-			if ($category != 'Rent')
-				$price = $price * $totalPeopleNumber;
+			$price = $price * $totalPeopleNumber;
+			$list[$category]['total'] += $price;
+			$total += $price;
+		}
+
+		foreach ($nodesOnce as $node) {
+			$price = (int) $node->get('field_price')
+				->getString();
+
+			$category = $node->get('field_category')
+				->getString();
+			$list[$category][] = [
+				'title' => $node->getTitle(),
+				'price' => $price,
+				'times' => 1
+			];
 
 			$list[$category]['total'] += $price;
 			$total += $price;
