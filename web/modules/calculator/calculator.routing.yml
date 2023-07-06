@@ -6,7 +6,7 @@ calculator:
     _permission: 'access content'
 
 calculator_result:
-  path: 'calculator/result/{area}/{status}/{kids}/{car}/{houseType}'
+  path: 'calculator/result/{area}/{status}/{kids}/{car}'
   defaults:
     _controller: '\Drupal\calculator\Controller\CalculatorController::calculate'
   requirements:

@@ -61,18 +61,18 @@ class CalculatorForm extends FormBase {
 			'#required' => TRUE,
 		];
 
-		$form['houseType'] = [
-			'#type' => 'radios',
-			'#title' => t('Type of house'),
-			'#default_value' => 'studio',
-			'#options' => [
-				'share_house' => t('Share House'),
-				'studio' => t('Studio'),
-				'1_bedroom_apartment' => t('1 Bedroom'),
-				'2_bedroom_apartment' => t('2 Bedrooms')
-			],
-			'#required' => TRUE,
-		];
+//		$form['houseType'] = [
+//			'#type' => 'radios',
+//			'#title' => t('Type of house'),
+//			'#default_value' => 'studio',
+//			'#options' => [
+//				'share_house' => t('Share House'),
+//				'studio' => t('Studio'),
+//				'1_bedroom_apartment' => t('1 Bedroom'),
+//				'2_bedroom_apartment' => t('2 Bedrooms')
+//			],
+//			'#required' => TRUE,
+//		];
 
 		$form['car'] = [
 			'#type' => 'radios',
@@ -100,7 +100,6 @@ class CalculatorForm extends FormBase {
 				'status' => $form_state->getValue('status'),
 				'kids' => $form_state->getValue('kids'),
 				'car' => $form_state->getValue('car'),
-				'houseType' => $form_state->getValue('houseType')
 			]
 		);
 	}

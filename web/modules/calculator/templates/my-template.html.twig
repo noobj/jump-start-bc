@@ -1,18 +1,49 @@
 <h2>Result</h2>
-
 {% for category, item in nodes %}
-    {{ category }} - ${{ item.total }}
+    {{ category }} - $<span id="{{ category }}Total">0</span>
     <hr />
     {% for key, value in item %}
-        {% if key != 'total' %}
-            {{ value.title }} - ${{ value.price }}
-            {% if value.times > 1 %}
-                * {{ value.times }}
-            {% endif %}
-            <br />
+        {{ value.title }} - ${{ value.price }}
+        {% if value.times > 1 %}
+            * {{ value.times }}
         {% endif %}
+        <input style="margin-left: 10px" type="checkbox" category="{{ category }}" value="{{ value.price }}"/>
+        <br />
     {% endfor %}
     <br />
 {% endfor %}
 
-<h3>Total: ${{ total }} </h3>
+<h3>Total: $<span id="total">0</span> </h3>
+
+{% block javascripts %}
+    <script type="text/javascript">
+      let total = 0;
+      const subTotals = new Map([
+        ["Rent", 0],
+        ["Food", 0],
+        ["Transportation", 0],
+        ["Mobile", 0]
+      ]);
+
+      const checkboxes = document.querySelectorAll("input[type=checkbox]");
+
+      for (const checkbox of checkboxes) {
+        checkbox.addEventListener("change", function() {
+          const category = this.getAttribute("category");
+          let subTotal = subTotals.get(category);
+
+          if (this.checked) {
+            total += parseInt(this.value);
+            subTotal += parseInt(this.value);
+          } else {
+            total -= parseInt(this.value);
+            subTotal -= parseInt(this.value);
+          }
+
+          subTotals.set(category, subTotal);
+          document.getElementById("total").innerHTML = total;
+          document.getElementById(category + "Total").innerHTML = subTotal;
+        })
+      }
+    </script>
+{% endblock %}
