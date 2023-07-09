@@ -4,9 +4,6 @@
     <hr />
     {% for key, value in item %}
         {{ value.title }} - ${{ value.price }}
-        {% if value.times > 1 %}
-            * {{ value.times }}
-        {% endif %}
         <input style="margin-left: 10px" type="checkbox" category="{{ category }}" value="{{ value.price }}"/>
         <br />
     {% endfor %}
