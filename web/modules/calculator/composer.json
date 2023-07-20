@@ -1,6 +1,7 @@
 {
-    "name": "vendor_name/calculator",
+    "name": "drupal/calculator",
     "description": "description",
+    "type": "drupal-module",
     "minimum-stability": "stable",
     "license": "proprietary",
     "authors": [

@@ -2,5 +2,4 @@ name: 'Living Cost Calculator'
 type: module
 description: 'A Living Cost Calculator'
 package: Custom
-core: 8.x
 core_version_requirement: ^10

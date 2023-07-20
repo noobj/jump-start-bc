@@ -1,4 +1,7 @@
 <?php
+
+use Drupal\Core\Database\Database;
+
 /**
  * Implements hook_theme().
  */
@@ -9,7 +12,8 @@ function calculator_theme($existing, $type, $theme, $path){
 			'nodes' => NULL,
 			'total' => 0,
 			'adults' => 1,
-			'totalPeople' => 1
+			'totalPeople' => 1,
+			'form' => NULL
 		],
 	  ],
 	  'my_form' => [
@@ -18,13 +22,3 @@ function calculator_theme($existing, $type, $theme, $path){
 	];
 }
 
-/**
- * Implements hook_modules_installed().
- */
-function calculator_modules_installed($modules, $is_syncing) {
-	\Drupal::entityTypeManager()->getStorage('living_cost_data')->create(
-		[
-			'name' => 'food'
-		]
-	);
-}

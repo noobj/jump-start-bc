@@ -11,3 +11,10 @@ calculator_result:
     _controller: '\Drupal\calculator\Controller\CalculatorController::calculate'
   requirements:
     _permission: 'access content'
+
+feedback_result:
+  path: 'feedback/result/{rating}/{recommend}/{comment}'
+  defaults:
+    _controller: '\Drupal\calculator\Controller\CalculatorController::storeFeedback'
+  requirements:
+    _permission: 'access content'

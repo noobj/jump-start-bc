@@ -4,6 +4,7 @@ namespace Drupal\calculator\Controller;
 
 use Drupal\node\Entity\Node;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\calculator\Entity\Feedback;
 
 class CalculatorController extends ControllerBase {
 
@@ -47,11 +48,15 @@ class CalculatorController extends ControllerBase {
 			];
 		}
 
+		$myform = \Drupal::formBuilder()
+			->getForm('Drupal\calculator\Form\FeedbackForm');
+
 		return [
 			'#theme' => 'my_template',
 			'#nodes' => $list,
 			'#adults' => $adultsNumber,
-			'#totalPeople' => $totalPeopleNumber
+			'#totalPeople' => $totalPeopleNumber,
+			'#form' => $myform
 		];
 	}
 
@@ -62,6 +67,20 @@ class CalculatorController extends ControllerBase {
 		return [
 			'#theme' => 'my_form',
 			'#form' => $myform,
+		];
+	}
+
+	public function storeFeedback($rating, $recommend, $comment) {
+		$feedback = Feedback::create([
+			'rating' => $rating,
+			'recommend' => $recommend,
+			'comment' => $comment
+		]);
+
+		$feedback->save();
+
+		return [
+			'#markup' => $this->t('Thanks for your feedback!'),
 		];
 	}
 
