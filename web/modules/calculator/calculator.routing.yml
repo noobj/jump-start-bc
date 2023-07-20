@@ -16,5 +16,6 @@ feedback_result:
   path: 'feedback/result/{rating}/{recommend}/{comment}'
   defaults:
     _controller: '\Drupal\calculator\Controller\CalculatorController::storeFeedback'
+    comment: ''
   requirements:
     _permission: 'access content'

@@ -70,7 +70,7 @@ class CalculatorController extends ControllerBase {
 		];
 	}
 
-	public function storeFeedback($rating, $recommend, $comment) {
+	public function storeFeedback($rating, $recommend, $comment = NULL) {
 		$feedback = Feedback::create([
 			'rating' => $rating,
 			'recommend' => $recommend,
