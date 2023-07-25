@@ -6,7 +6,6 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 class CalculatorForm extends FormBase {
-
 	public function getFormId() {
 		return 'my_calculator';
 	}
@@ -60,19 +59,6 @@ class CalculatorForm extends FormBase {
 			],
 			'#required' => TRUE,
 		];
-
-//		$form['houseType'] = [
-//			'#type' => 'radios',
-//			'#title' => t('Type of house'),
-//			'#default_value' => 'studio',
-//			'#options' => [
-//				'share_house' => t('Share House'),
-//				'studio' => t('Studio'),
-//				'1_bedroom_apartment' => t('1 Bedroom'),
-//				'2_bedroom_apartment' => t('2 Bedrooms')
-//			],
-//			'#required' => TRUE,
-//		];
 
 		$form['car'] = [
 			'#type' => 'radios',
